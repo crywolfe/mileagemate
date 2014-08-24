@@ -1,20 +1,20 @@
-#MILEAGEMATE APP
-#SOFTWARE DESIGN AND TECHNICAL THOUGHTS
-#BY
-#GERALD WOLFE
+ ##MILEAGEMATE APP
+##SOFTWARE DESIGN AND TECHNICAL THOUGHTS
+##BY
+##GERALD WOLFE
 
-##Introduction
+###Introduction
 The app would allow the user to have the following interactions:
 1. record a trip
 2. describe a purpose
 3. create/select a vehicle
 4. record start and end location and odometer
 
-##Initial Architecture
+###Initial Architecture
 
 The first thing I would do is create an initial ERD to visualize the data structure and the relationships between the objects.
 
-![ERD](./mileagemate.png)
+![ERD](./MileageMate.png)
 
 Two initial questions come to mind as I work through this initial ERD.
 1.  Should a user have many vehicles or should a user have many vehicles only through Trips?
@@ -25,9 +25,7 @@ If this ERD provides a good foundation for our data, then I would want to wire f
 Also, once I have this information, I would draft up a set of user stories… maybe 10 - 15 to start and confirm and order the user stories.
 
 
-
-
-##Programmatic Features
+###Programmatic Features
 Since NodeJS is the back end of choice, MongoDB fits well with its JSON format.   It allows for there to be a JavaScript front and back end code stack using JSON data stores.
 
 The programmatic requirements seem to be straightforward.
@@ -60,7 +58,7 @@ Also, Using JavaScript as the arterial stack, so to speak, would help keep devel
 
 But, I do have some thoughts on the database.
 
-##Database as a Programmatic Aspect
+###Database as a Programmatic Aspect
 
 The choice of data storage and retrieval can be a complicated one.  Here, MongoDB is the chosen data storage technology.  On an initial glance without knowing more about the UI/UX, and the user interaction with the data, using Mongo should not create any unnecessary burdens.  One of the first attributes I look for when choosing a database system is based on whether the app places a high value priority on the use of ‘joins’ or other similar tabular retrievals.  If so, then a discussion regarding a relational database structure is in order.
 
@@ -70,7 +68,7 @@ MongoDB is great for self contained documents.  As one starts to reference other
 
 On the other hand, PostgreSQL hstore handles key value pairs exceptionally well.  In any case, these issues are good fodder for a database design discussion.
 
-##User Interaction
+###User Interaction
 
 The requirements ask for MileageMate to run on multiple devices.  The clear import though is to ensure it works on mobile devices.  The UI/UX and functionality needs to have a strong focus on mobile.
 
@@ -78,7 +76,7 @@ The UI should be able to distinguish between what devices are being used.  Mobil
 
 MongoDB also allows for easy trip creation offline since the data is handled on the client side.
 
-##Technical Requirements
+###Technical Requirements
 
 Creating trips offline will be somewhat academic since trips will be created client side using BackboneJS collections and model instances.
 
@@ -93,8 +91,8 @@ jQuery (through jQuery mobile) has been shown to work well with mobile devices. 
 
 Using NodeJS to handle client server communication works.   NodeJS is a tool that really does well with real-time non-blocking client to server communications.  I think the real value in using NodeJS is having the integrated JavaScript stack available because MileageMate is real-time dependent.
 
-#Key Technical Challenge
-##Multi-Device
+##Key Technical Challenge
+###Multi-Device
 
 To make MileageMate multi-device capable, we need to emulate native apps on the Apple and Android platform.  Cordova creates a hybrid wrapper.
 
@@ -104,7 +102,7 @@ Cordova’s API is that it includes a localStorage object which interacts with t
 
 Another benefit for using MongoDB is that localStorage saves data in key value pairs.  Yes, PostrgreSQL through hstore can do that but that would involve more programmatic work and thus increase the cost, potential bugs, and delivery time.
 
-##Syncing
+###Syncing
 
 Using NodeJS provides a native way to implement syncing.   We create a server listening event.  When MileageMate is online, it emits a request to the server and the server responds with a syncing function.  The syncing function would not be called until all the appropriate data entry validations return true.
 
@@ -112,7 +110,7 @@ The key functionality of localStorage is that it is specifically meant to allow 
 
 So, the bottom line is that upon confirmation of a trip, the save function is called and the sync function is called.
 
-##OTHER AREAS OF CONTENTION
+###OTHER AREAS OF CONTENTION
 
 I’ve already pointed out the UI/UX issues above which must be resolved.  But there is another issue.
 
