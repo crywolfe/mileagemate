@@ -17,8 +17,10 @@ The first thing I would do is create an initial ERD to visualize the data struct
 ![ERD](./MileageMate.png)
 
 Two initial questions come to mind as I work through this initial ERD.
-1.  Should a user have many vehicles or should a user have many vehicles only through Trips?
-2.  Am I missing any other necessary attributes in order to meet the specs?
+
+_1.  Should a user have many vehicles or should a user have many vehicles only through Trips?_
+
+_2.  Am I missing any other necessary attributes in order to meet the specs?_
 
 If this ERD provides a good foundation for our data, then I would want to wire frame a simple UI/UX so that I have an understanding of the UI/UX logic flow.  The UI/UX was not discussed in the requirements.  Because it was not discussed, it leaves room for too much interpretation.  Interpretation leads to higher costs, unmet expectations and frustration.  In developing this app, I would ask a number of UI/UX questions some of which I will describe below.
 
@@ -32,29 +34,35 @@ The programmatic requirements seem to be straightforward.
 
 MileageMate needs a “confirmation” function.  A confirmation button would control a confirmation event which when triggered calls certain programmatic functions to store data and create a new trip.  This seems straightforward at this time.  There are some initial questions though.
 
-Can the user change values after “confirming”?
-If so, should there a time limit to changing values?
-Do we want to store that the user has changed values?
+_Can the user change values after “confirming”?_
+
+_If so, should there a time limit to changing values?_
+
+_Do we want to store that the user has changed values?_
 
 MileageMate needs to store the 20 most recent trips.  Storing the 20 most recent trips in local storage on the device is a critical functional piece.  With HTML5’s Web Storage, BackboneJS’s save function and Cordova’s ability to access a device’s local storage would be the tools I would use.  I have another question.
 
-Do the 20 most recent trips include the changes the user may have made (assuming changes are allowed)?
+_Do the 20 most recent trips include the changes the user may have made (assuming changes are allowed)?_
 
 MileageMate also needs to generate a monthly report.  This functionality is straight up good old fashioned programming -- grab the data, manipulate it and deliver it.
 
-How is the data to be delivered e.g. excel sheet, on screen within the app itself, pdf, all three, etc.?
-How should the data delivery look?
-Is the monthly report to be timecoded and stamped and independently saved?
-Where is it to be saved?  In what form?
-Who has access to it?
+_How is the data to be delivered e.g. excel sheet, on screen within the app itself, pdf, all three, etc.?_
+
+_How should the data delivery look?_
+
+_Is the monthly report to be timecoded and stamped and independently saved?_
+
+_Where is it to be saved?  In what form?_
+
+_Who has access to it?_
 
 These are some of the questions that immediately come to mind.
 
-There is another very important issue to resolve though.  Cost.
+There is another very important issue to resolve though--  cost.
 
 Creating user stories as a preliminary matter will help manage costs.  I would highly recommend creating user stories for MileageMate.
 
-Also, Using JavaScript as the arterial stack, so to speak, would help keep development costs low, because BackboneJS, NodeJS and MongoDB together work efficiently together.
+Also, using JavaScript as the arterial stack, so to speak, would help keep development costs low, because BackboneJS, NodeJS and MongoDB together work efficiently together.
 
 But, I do have some thoughts on the database.
 
